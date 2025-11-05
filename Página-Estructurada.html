@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            min-height: 400px;
+        }
+
+        .aside {
+            background-color: #d66000;
+            width: 25%;
+            padding: 20px;
+        }
+
+        .main {
+            background-color: #fff;
+            width: 75%;
+            padding: 20px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+        <div class="header">
+            <img src="https://acortar.link/TqqoFg" width="400vh" height="150vh" >
+            <h1 id="Inicio" >Página Completa</h1>
+        </div>
+
+        <div class="nav">
+            <a href="#Inicio" style="color: white; margin: 0 10px;">Inicio</a>
+            <a href="#Ubicación" style="color: white; margin: 0 10px;">Ubicación</a>
+            <a href="#Horario" style="color: white; margin: 0 10px;">Horario</a>
+        </div>
+
+    <div class="container">
+        <div class="aside">
+            <p style="color: #1f1d1d; text-align: center;"></p>
+            <h1 style="text-align: center;" >Ubicación del instituto</h1>
+            <iframe
+                id="Ubicación"
+                src="https://acortar.link/aF5TQ1"
+                width="300"
+                height="250"
+                style="display: block; margin: 0 auto; border: 1px solid #ccc;">
+            </iframe>
+            <br>
+            <form action="https://translate.google.com/" method="get" target="_blank"> <!--Ya que la API de traductor no funciona en archivos locales, he buscado otra forma que te redirija a la propia web-->
+                <input type="text" name="text" placeholder="Escribe algo..." style="width: 90%; padding: 5px;">
+                <input type="hidden" name="hl" value="es">
+                <input type="hidden" name="sl" value="auto">
+                <input type="hidden" name="tl" value="en">
+                <button type="submit">Traducir al inglés</button>
+            </form>
+        </div>
+
+            <div class="main">
+                <h2 style="color: black; text-align: center; font-size: 42px; ">Contenido Principal</h2>
+                <p style="color: #333;">La asignatura de aplicaciones web me parece bastante interesante. <br> <strong>SEO</strong>
+                    son las siglas en inglés de "Search Engine Optimization" (Optimización en Motores de Búsqueda), un conjunto de técnicas para mejorar la visibilidad de un sitio web en los resultados orgánicos de buscadores como Google. El objetivo principal es atraer tráfico de calidad a un sitio web, mejorando su posicionamiento en los resultados de búsqueda sin pagar por publicidad, lo que lo convierte en una estrategia a largo plazo muy rentable. </p>
+            </div>
+    </div>
+
+        <div class="footer">
+            <p id="Horario">Horario: Lunes a Viernes<br>🕒 De 8:30 a 14:30*</p>
+            <p style="color: gray; font-size: 16px;" >*Excepto festivos</p>
+        </div>
+
+</body>
+</html>
