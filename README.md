@@ -1,1 +1,1 @@
-
+En este proyecto, se añadirán todos los trabajos y tareas realizadas en la asignatura de Aplicaciones Web del Grado Medio de Sistemas Microinformáticos y Redes del IES Donoso Cortés.
