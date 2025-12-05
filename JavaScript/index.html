@@ -15,6 +15,10 @@
             font-size: 18px;
             background-color: pink;
         }
+        .parrafo1 {
+            color: purple;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -34,15 +38,11 @@
 */
         const parrafo0 = document.getElementsByTagName('p')[0];
         parrafo0.style.color='green';
-        parrafo0.style.fontSize='20px';
+        parrafo0.style.fontSize='15px';
         parrafo0.style.fontWeight='bold'; /*negrita, CSS: font-weight: bold; */
         parrafo0.style.fontStyle='italic'; /*cursiva, CSS: font-style: italic; */
-
-
-        /*aplicar estilos con una clase, aplica una clase eliminando las clases anteriores
-        document.getElementsByTagName('p')[1].className='coleccion';*/
-
-        document.getElementsByTagName('p')[1].classList.add('coleccion'); /*aplica una clase sin eliminar las clases anteriores*/   
+        parrafo0.classList.add('parrafo1');
+        parrafo0.classList.add('coleccion');
     "> Cambia el aspecto del párrafo
     </button>
     <br>
@@ -134,6 +134,10 @@
         const arbol2 = document.getElementById('arbol');
         arbol2.hidden = !arbol2.hidden;
         this.innerHTML = arbol2.hidden ? 'Mostrar árbol' : 'Ocultar árbol';
+    ">Ocultar árbol</button>
+    <img id="arbol2" src="img/arbol.png" alt="arbol2"; style="width: 300px; height: 500px;">
+</body>
+</html>strar árbol' : 'Ocultar árbol';
     ">Ocultar árbol</button>
     <img id="arbol2" src="img/arbol.png" alt="arbol2"; style="width: 300px; height: 500px;">
 </body>
