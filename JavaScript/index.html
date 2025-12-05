@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio JavaScript</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px; 
+            box-sizing: border-box;
+        }
+        .coleccion {
+            color: red;
+            font-size: 18px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<body>
+    <h1>JavaScript</h1>
+    <p>
+        El DOM, que significa Document Object Model o Modelo de Objetos del Documento, es una interfaz de programación para documentos HTML, XML y otros formatos, que define la estructura lógica de los documentos y la forma en que se accede y manipula su contenido. &lt;h1 &gt; &lt;/h1 &gt;. Esencialmente, representa la página web como una estructura jerárquica en forma de árbol, donde cada elemento del documento se convierte en un nodo, permitiendo a los programas, especialmente JavaScript, interactuar con el contenido, la estructura y el estilo de la página. &lt;h1 &gt; &lt;/h1 &gt;. Cuando un navegador carga una página web, convierte el código HTML en una representación en memoria que se puede manipular mediante JavaScript, lo que permite crear páginas dinámicas y con interacción.
+    </p>
+
+    <button onclick="
+
+/*      declaro la constante párrafo 0
+        document.getElementsByTagName('p')[0].style.color='green';
+        document.getElementsByTagName('p')[0].style.size='20px';
+        document.getElementsByTagName('p')[0].style.fontWeight='bold'; /*negrita, CSS: font-weight: bold; 
+        document.getElementsByTagName('p')[0].style.fontStyle='italic'; /*cursiva, CSS: font-style: italic;
+*/
+        const parrafo0 = document.getElementsByTagName('p')[0];
+        parrafo0.style.color='green';
+        parrafo0.style.fontSize='20px';
+        parrafo0.style.fontWeight='bold'; /*negrita, CSS: font-weight: bold; */
+        parrafo0.style.fontStyle='italic'; /*cursiva, CSS: font-style: italic; */
+
+
+        /*aplicar estilos con una clase, aplica una clase eliminando las clases anteriores
+        document.getElementsByTagName('p')[1].className='coleccion';*/
+
+        document.getElementsByTagName('p')[1].classList.add('coleccion'); /*aplica una clase sin eliminar las clases anteriores*/   
+    "> Cambia el aspecto del párrafo
+    </button>
+    <br>
+    <br>
+    <button onclick="CambiarP()">Cambia el aspecto de todos los párrafos</button>
+
+    <script>
+        function CambiarP() {
+        // Selecciona TODOS los elementos <p> y los guarda en una lista (NodeList)
+        const parrafos = document.querySelectorAll('p');
+
+        // Itera sobre cada elemento individualmente para aplicar los estilos
+        parrafos.forEach(parrafo => {
+        parrafo.style.color = 'blue';
+        parrafo.style.fontSize = '15px';
+        parrafo.style.fontWeight = 'bold';
+        parrafo.style.fontStyle = 'italic';
+        });
+        }
+    </script>
+    <br>
+    <br>
+    <button onclick="CambiarTodo()">Restablecer Párrafos</button>
+
+    <script>
+        function CambiarTodo() {
+        // Selecciona TODOS los elementos <p> y los guarda en una lista (NodeList)
+        const parrafos = document.querySelectorAll('p');
+
+        // Itera sobre cada elemento individualmente para aplicar los estilos
+        parrafos.forEach(parrafo => {
+        parrafo.style.color = 'black';
+        parrafo.style.fontSize = '16px';
+        parrafo.style.background = 'white';
+        parrafo.style.fontWeight = 'normal';
+        parrafo.style.fontStyle = 'normal';
+        });
+        }
+    </script>
+    <p id="saludo">Hola buenos días</p>
+    <!--Efectos dia y noche-->
+    <button type="button"
+    
+        data-estado="claro"
+        onclick="
+            if (this.dataset.estado === 'claro') {
+                document.body.style.color='white';
+                document.body.style.backgroundColor='black';
+                document.getElementById('dianoche').src='img/luna.png';
+                this.dataset.estado='oscuro';
+            } else {
+                document.body.style.color='black';
+                document.body.style.backgroundColor='white';
+                document.getElementById('dianoche').src='img/sol.png';
+                this.dataset.estado='claro';
+            }">
+        <img id="dianoche" src="img/sol.png" alt="sol" style="width:100px; height:100px;">
+    </button>
+    <br>
+    <br>
+    <br>
+    <button type="button" onclick="document.getElementById('saludo').innerHTML = 'Hoy vamos a hacer ejercicios de JavaScript'">
+    Clic sobre mí
+    </button> <br>
+    <img id="imagen" src="img/seria.png" alt="cara_seria"; style="width: 300px; height: 300px;">
+    <br>
+    <!--Hay 3 imágenes, una de ellas se muestra mientras las otras 2 se ocultan hasta ser llamadas-->
+    <button onclick="document.getElementById('imagen').src='img/feliz.png'">
+    Cara feliz
+    </button>
+    <button onclick="document.getElementById('imagen').src='img/seria.png'">
+    Cara seria
+    </button>
+    <button onclick="document.getElementById('imagen').src='img/triste.png'">
+    Cara triste
+    </button>
+    <br>
+    <br>
+    <br>
+    <!--Mostrar y ocultar imágenes, uso de constantes y uso de if/else-->
+    <button onclick="
+        const arbol = document.getElementById('arbol');
+        arbol.hidden = !arbol.hidden;
+        this.innerHTML = arbol.hidden ? 'Mostrar árbol' : 'Ocultar árbol';
+    ">Ocultar árbol</button>
+    <img id="arbol" src="img/arbol.png" alt="arbol"; style="width: 300px; height: 500px;">
+
+    <button onclick="
+        const arbol2 = document.getElementById('arbol');
+        arbol2.hidden = !arbol2.hidden;
+        this.innerHTML = arbol2.hidden ? 'Mostrar árbol' : 'Ocultar árbol';
+    ">Ocultar árbol</button>
+    <img id="arbol2" src="img/arbol.png" alt="arbol2"; style="width: 300px; height: 500px;">
+</body>
+</html>
