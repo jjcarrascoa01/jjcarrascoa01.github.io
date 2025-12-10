@@ -4,118 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index.html</title>
+
     <!-- ESTILOS -->
     <link rel="stylesheet" href="css/estilos1.css">
-    <link rel="stylesheet" href="css/estilos2.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
-        .header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .nav {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .container {
-            display: flex;
-            min-height: 400px;
-        }
-
-        .aside {
-            background-color: #d66000;
-            width: 25%;
-            padding: 20px;
-        }
-
-        .main {
-            background-color: #fff;
-            width: 75%;
-            padding: 20px;
-        }
-
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 0 10px;
-            background: linear-gradient(to right, #004080, lightgreen );;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.2s ease;
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px #003366;
-        }
-        .btn2 {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 20px 0;
-            background: black;;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.2s ease;
-        }
-        .btn2:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px #383434;
-        }
-        details {
-            border: 3px solid #ccc;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-        }
-        summary {
-            cursor: pointer;
-            font-weight: bold;
-            user-select: none;
-        }
-
-        details[open] > *:not(summary) {
-            animation: flyInFromBottom 0.5s ease-out;
-        }
-
-        @keyframes flyInFromBottom {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .details-content {
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-            max-height: 0;
-            opacity: 0;
-        }
-
-        details[open] .details-content {
-            max-height: 500px;
-            opacity: 1;
-        }
-    </style>
 
     <link href='https://fonts.googleapis.com/css?family=Source Code Pro' rel='stylesheet'>
 
@@ -137,13 +28,12 @@
         <meta name="twitter:image" content="img/Logo-Juanjo.png"&gt;>
         <meta name="twitter:site" content="@jjcarrascoa01">
         <meta name="twitter:url" content="https://jjcarrascoa01.github.io/">
+
     <!---------SEO--------->
         <meta name="description" content="Trabajos de APW">
         <meta name="theme-color" content="#4CAF50">
     <!------------scripts---------------->
         <script src="main.js"></script>
-    <script>
-    </script>
 </head>
 <body>
         <div class="header">
@@ -172,9 +62,9 @@
             <iframe
                 id="Ubicación"
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1551.1758956909605!2d-5.8671369!3d38.9616345!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd145b0335e1715b%3A0x485f02fe56f2d511!2sIES%20Donoso%20Cort%C3%A9s!5e0!3m2!1ses!2ses!4v1762336973194!5m2!1ses!2ses"
-                width="300"
+                width="280"
                 height="250"
-                style="display: block; margin: 0 auto; border: 1px solid #ccc;">
+                style="display: block; margin: 0 auto; border: 1px solid #ccc; ">
             </iframe>
             <br>
             <form action="https://translate.google.com/" method="get" target="_blank"> <!--Ya que la API de traductor no funciona en archivos locales, he buscado otra forma que te redirija a la propia web-->

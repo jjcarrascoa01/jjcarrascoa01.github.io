@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    min-height: 400px;
+}
+
+.aside {
+    background-color: #d66000;
+    width: 25%;
+    padding: 20px;
+}
+
+.main {
+    background-color: #fff;
+    width: 75%;
+    padding: 20px;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background: linear-gradient(to right, #004080, lightgreen );;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px #003366;
+}
+.btn2 {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    background: black;;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+.btn2:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px #383434;
+}
+details {
+    border: 3px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+}
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+}
+
+details[open] > *:not(summary) {
+    animation: flyInFromBottom 0.5s ease-out;
+}
+
+@keyframes flyInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.details-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 0;
+    opacity: 0;
+}
+
+details[open] .details-content {
+    max-height: 500px;
+    opacity: 1;
+}
