@@ -64,6 +64,57 @@
             transform: translateY(-3px);
             box-shadow: 0 8px #003366;
         }
+        .btn2 {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background: black;;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+        .btn2:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px #383434;
+        }
+        details {
+            border: 3px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        details[open] > *:not(summary) {
+            animation: flyInFromBottom 0.5s ease-out;
+        }
+
+        @keyframes flyInFromBottom {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .details-content {
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        details[open] .details-content {
+            max-height: 500px;
+            opacity: 1;
+        }
     </style>
 
     <link href='https://fonts.googleapis.com/css?family=Source Code Pro' rel='stylesheet'>
@@ -106,9 +157,12 @@
             <a href="MPW/miprimeraweb.html" class="btn" target="_blank">Mi Primera Web</a>
             <a href="imginterctv/imageninteractiva.html" class="btn" target="_blank">Imagen Interactiva</a>
             <a href="EtiquetasDeTxt/EtiquetasDeTexto.html" class="btn" target="_blank">Etiquetas de Texto</a>
+        </div>
+        <div class="nav">
             <a href="Ancors/ancors.html" class="btn" target="_blank">Ancors</a>
             <a href="Ancors/Posiciones.html" class="btn" target="_blank">Posiciones</a>
             <a href="JavaScript/index.html" class="btn" target="_blank">Primer JavaScript</a>
+            <a href="pages/pagina_dhcp.html" class="btn" target="_blank">Página DHCP</a>
         </div>
 
     <div class="container">
@@ -137,10 +191,19 @@
                 <h2 style="color: black; text-align: center; font-size: 42px; ">Contenido Principal</h2>
                 <details>
                     <summary style="color: black;">¿Qué es el SEO?</summary>
-                <p style="color: #333;">La asignatura de aplicaciones web me parece bastante interesante. <br> <strong>SEO</strong>
-                    son las siglas en inglés de "Search Engine Optimization" (Optimización en Motores de Búsqueda), un conjunto de técnicas para mejorar la visibilidad de un sitio web en los resultados orgánicos de buscadores como Google. El objetivo principal es atraer tráfico de calidad a un sitio web, mejorando su posicionamiento en los resultados de búsqueda sin pagar por publicidad, lo que lo convierte en una estrategia a largo plazo muy rentable. </p>
+                    <div class="details-content">
+                    <p style="color: black;">La asignatura de aplicaciones web me parece bastante interesante. <br> <strong>SEO</strong>
+                    son las siglas en inglés de "Search Engine Optimization" (Optimización en Motores de Búsqueda), un conjunto de técnicas para mejorar la visibilidad de un sitio web en los resultados orgánicos de buscadores como Google. El objetivo principal es atraer tráfico de calidad a un sitio web, mejorando su posicionamiento en los resultados de búsqueda sin pagar por publicidad, lo que lo convierte en una estrategia a largo plazo muy rentable.</p>
+                    </div>
                     
                 </details>
+                <details>
+                    <summary style="color: black;">IES Donoso Cortés</summary>
+                    <div class="details-content">
+                    <p style="color: black;">El IES Donoso Cortés es un Instituto de Educación Secundaria ubicado en Don Benito, Badajoz. Ofrece enseñanza secundaria y formación profesional, incluyendo programas como el Programa de Refuerzo y Atención en Grupo Específico (PRAGE) para 4º de ESO, cofinanciado por el Ministerio de Educación. El centro promueve actividades educativas innovadoras, como proyectos bilingües de germinación de semillas con alumnos de 1º de ESO, y participa en programas de verano para jóvenes, algunos con plazas bonificadas para familias en riesgo de exclusión.</p>
+                    </div>
+                </details>
+                <a href="pages/formulario.html" class="btn2" target="_blank">Formulario de registro para el centro</a>
             </div>
     </div>
 
@@ -148,7 +211,5 @@
             <p id="Horario">Horario: Lunes a Viernes<br>🕒 De 8:30 a 14:30*</p>
             <p style="color: gray; font-size: 16px;" >*Excepto festivos</p>
         </div>
-            <button type="button" onclick="document.getElementById('Fecha_y_hora').innerHTML = Date();">
-            Click para ver fecha y hora.</button>    
 </body>
 </html>
