@@ -133,6 +133,17 @@
                 <button type="button" onclick="document.write('Hola buenos días');">
                     Consola
                 </button>
+                <script>
+                    const form = document.getElementById('contacto');
+                    form.addEventListener("submit", (e) => {
+                        e.preventDefault();  
+                        const nombre = form.nombre.value;
+                        const email = form.email.value;
+
+                        console.log("Nombre:", nombre);
+                        console.log("Email:", email);
+                    });
+                </script>
                 </div>
         </div>
     </form>
