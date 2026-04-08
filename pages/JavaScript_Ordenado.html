@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenar Números</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 50px; background-color: #f0f2f5; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); text-align: center; }
+        input { margin: 10px; padding: 12px; width: 70px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; }
+        button { padding: 12px 25px; cursor: pointer; background-color: #6f42c1; color: white; border: none; border-radius: 8px; font-weight: bold; transition: 0.3s; }
+        button:hover { background-color: #59359a; }
+        #resultado { margin-top: 25px; font-size: 1.4em; color: #333; }
+        .numero-badge { background: #6f42c1; color: white; padding: 5px 15px; border-radius: 20px; margin: 0 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Ordenador de Números</h2>
+        <p>Introduce 3 números para ordenarlos de mayor a menor:</p>
+        
+        <input type="number" id="num1" placeholder="Nº 1">
+        <input type="number" id="num2" placeholder="Nº 2">
+        <input type="number" id="num3" placeholder="Nº 3">
+        
+        <br><br>
+        <button onclick="ordenar()">Ordenar Ahora</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function ordenar() {
+            const n1 = parseFloat(document.getElementById('num1').value);
+            const n2 = parseFloat(document.getElementById('num2').value);
+            const n3 = parseFloat(document.getElementById('num3').value);
+            const display = document.getElementById('resultado');
+
+            if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+                display.innerHTML = "<span style='color:red;'>Completa los tres campos</span>";
+                return;
+            }
+
+            // 1. Metemos los números en una lista (Array)
+            let numeros = [n1, n2, n3];
+
+            // 2. Usamos el método sort. 
+            // Para orden descendente (mayor a menor) restamos b - a.
+            numeros.sort(function(a, b) {
+                return b - a;
+            });
+
+            // 3. Mostramos el resultado bonito
+            display.innerHTML = "Orden: " + 
+                "<span class='numero-badge'>" + numeros[0] + "</span>" +
+                "<span class='numero-badge'>" + numeros[1] + "</span>" +
+                "<span class='numero-badge'>" + numeros[2] + "</span>";
+        }
+    </script>
+
+</body>
+</html>
