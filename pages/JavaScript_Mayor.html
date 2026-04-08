@@ -28,20 +28,17 @@
 
     <script>
         function compararNumeros() {
-            // Obtenemos los valores de los inputs y los convertimos a números decimales
             const n1 = parseFloat(document.getElementById('num1').value);
             const n2 = parseFloat(document.getElementById('num2').value);
             const n3 = parseFloat(document.getElementById('num3').value);
             const display = document.getElementById('resultado');
 
-            // Validación simple por si faltan datos
             if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
                 display.innerText = "Por favor, introduce los tres números.";
                 display.style.color = "red";
                 return;
             }
 
-            // Usamos Math.max para encontrar el mayor de forma eficiente
             const mayor = Math.max(n1, n2, n3);
 
             display.style.color = "#28a745";
