@@ -16,6 +16,7 @@
     gap: 8px;
     padding: 8px;
     scrollbar-width: thin;
+    background-color: black;
 }
 
 .nav::-webkit-scrollbar {
