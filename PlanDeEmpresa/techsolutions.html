@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechSolutions — Soluciones IT para PYMEs</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0d0d;
+    --ink-soft: #3a3a3a;
+    --ink-muted: #6b6b6b;
+    --bg: #f5f4f0;
+    --white: #ffffff;
+    --accent: #1a5c3a;
+    --accent-light: #e8f2ec;
+    --accent-mid: #2e8b57;
+    --line: #d8d7d2;
+    --r: 2px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 5vw;
+    background: rgba(245,244,240,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent-mid); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--r);
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 5vw;
+    padding-top: 80px;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: 10%;
+    width: 55%;
+    height: 80%;
+    background: var(--accent-light);
+    border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%;
+    z-index: 0;
+    animation: morph 12s ease-in-out infinite;
+  }
+  @keyframes morph {
+    0%,100% { border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%; }
+    50% { border-radius: 30% 70% 70% 30% / 30% 60% 40% 70%; }
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(26,92,58,0.2);
+  }
+  .hero-tag::before { content: '●'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent-mid);
+  }
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: var(--r);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    padding: 0.85rem 2rem;
+    border-radius: var(--r);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1.5px solid var(--ink);
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--white); }
+
+  .hero-visual { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1rem; }
+  .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.4rem 1.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); }
+  .stat-card .num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-card .num span { color: var(--accent-mid); }
+  .stat-card .lbl { font-size: 0.82rem; color: var(--ink-muted); font-weight: 400; }
+  .stat-card.accent { background: var(--accent); border-color: var(--accent); }
+  .stat-card.accent .num, .stat-card.accent .lbl { color: var(--white); }
+
+  /* SECTIONS */
+  section { padding: 6rem 5vw; }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    max-width: 560px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* SERVICIOS */
+  #servicios { background: var(--white); }
+  .services-header { margin-bottom: 3.5rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--line); border: 1.5px solid var(--line); }
+  .service-item {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+    cursor: default;
+  }
+  .service-item:hover { background: var(--ink); }
+  .service-item:hover .svc-icon, .service-item:hover .svc-title, .service-item:hover .svc-desc, .service-item:hover .svc-tags span { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .svc-icon {
+    font-size: 2rem;
+    color: var(--accent-mid);
+    margin-bottom: 1.5rem;
+    transition: color 0.25s;
+    display: block;
+  }
+  .svc-num {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--bg);
+    line-height: 1;
+    transition: color 0.25s;
+    pointer-events: none;
+  }
+  .service-item:hover .svc-num { color: rgba(255,255,255,0.08); }
+  .svc-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+    transition: color 0.25s;
+  }
+  .svc-desc {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    transition: color 0.25s;
+  }
+  .svc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .svc-tags span {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ink-muted);
+    transition: color 0.25s, border-color 0.25s;
+  }
+
+  /* PRECIOS */
+  #precios { background: var(--bg); }
+  .pricing-header { margin-bottom: 3rem; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
+  .price-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 2.2rem 1.8rem;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.featured {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+  }
+  .price-card.featured .price-name,
+  .price-card.featured .price-amount,
+  .price-card.featured .price-period,
+  .price-card.featured .price-desc,
+  .price-card.featured .feat-item { color: rgba(255,255,255,0.85); }
+  .price-card.featured .feat-item::before { color: #7ee8a2; }
+  .feat-badge {
+    display: inline-block;
+    background: var(--accent-mid);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+  .price-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .price-desc { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 1.5rem; font-weight: 300; line-height: 1.5; }
+  .price-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .price-period { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 2rem; }
+  .feat-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 2rem; }
+  .feat-item {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .feat-item::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--accent-mid);
+    font-weight: 700;
+  }
+  .btn-card {
+    display: block;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: var(--r);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+  }
+  .btn-card:hover { background: var(--ink); color: var(--white); }
+  .price-card.featured .btn-card { border-color: var(--white); color: var(--white); }
+  .price-card.featured .btn-card:hover { background: var(--white); color: var(--ink); }
+
+  /* EQUIPO */
+  #equipo { background: var(--white); }
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .team-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+    transition: transform 0.2s;
+  }
+  .team-card:hover { transform: translateY(-2px); }
+  .team-color {
+    width: 8px;
+    background: var(--accent);
+  }
+  .team-card:nth-child(2) .team-color { background: #1a3a5c; }
+  .team-content { padding: 2rem; }
+  .team-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .team-card:nth-child(2) .team-avatar { background: #e6f1fb; color: #185fa5; }
+  .team-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .team-role {
+    font-size: 0.8rem;
+    color: var(--accent-mid);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .team-bio { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
+  .team-skills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.65rem;
+    background: var(--bg);
+    border-radius: 100px;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  /* DAFO */
+  #dafo { background: var(--bg); }
+  .dafo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--line); border: 1.5px solid var(--line); margin-top: 3rem; }
+  .dafo-cell {
+    background: var(--white);
+    padding: 2rem 1.8rem;
+  }
+  .dafo-cell:nth-child(1), .dafo-cell:nth-child(2) { background: var(--ink); }
+  .dafo-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .dafo-cell:nth-child(1) .dafo-label, .dafo-cell:nth-child(2) .dafo-label { color: rgba(255,255,255,0.5); }
+  .dafo-cell:nth-child(3) .dafo-label { color: var(--accent-mid); }
+  .dafo-cell:nth-child(4) .dafo-label { color: #c0392b; }
+  .dafo-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  .dafo-cell:nth-child(1) .dafo-title, .dafo-cell:nth-child(2) .dafo-title { color: var(--white); }
+  .dafo-cell:nth-child(3) .dafo-title { color: var(--accent); }
+  .dafo-cell:nth-child(4) .dafo-title { color: var(--ink); }
+  .dafo-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .dafo-list li {
+    font-size: 0.86rem;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  .dafo-list li::before { content: '—'; position: absolute; left: 0; }
+  .dafo-cell:nth-child(1) .dafo-list li, .dafo-cell:nth-child(2) .dafo-list li { color: rgba(255,255,255,0.75); }
+  .dafo-cell:nth-child(1) .dafo-list li::before, .dafo-cell:nth-child(2) .dafo-list li::before { color: rgba(255,255,255,0.4); }
+  .dafo-cell:nth-child(3) .dafo-list li, .dafo-cell:nth-child(4) .dafo-list li { color: var(--ink-soft); }
+
+  /* CONTACTO */
+  #contacto {
+    background: var(--ink);
+    color: var(--white);
+    text-align: center;
+  }
+  #contacto .section-label { color: rgba(255,255,255,0.4); }
+  #contacto .section-title { color: var(--white); }
+  #contacto .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 3rem; }
+  .contact-form {
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-field label { font-size: 0.8rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+  .form-field input, .form-field select, .form-field textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--r);
+    padding: 0.8rem 1rem;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--accent-mid); }
+  .form-field select { appearance: none; cursor: pointer; }
+  .form-field select option { background: #1a1a1a; }
+  .btn-send {
+    background: var(--accent-mid);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: var(--r);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+  }
+  .btn-send:hover { background: var(--accent); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: #080808;
+    color: rgba(255,255,255,0.4);
+    padding: 2rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-logo span { color: var(--accent-mid); }
+
+  /* DIVIDER */
+  .divider { width: 48px; height: 3px; background: var(--accent-mid); border-radius: 2px; margin: 1.5rem 0; }
+
+  /* ANIMATE IN */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; }
+    .hero::before { display: none; }
+    .hero-visual { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .dafo-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Tech<span>Solutions</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#dafo">Empresa</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text fade-in">
+    <span class="hero-tag">Madrid · IT para PYMEs</span>
+    <h1>Tu departamento<br><em>tecnológico</em><br>externo.</h1>
+    <p>Desarrollo de software a medida, ciberseguridad y consultoría IT. Todo lo que tu empresa necesita, sin tener que contratar varios proveedores.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Hablemos →</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-stat-grid">
+      <div class="stat-card accent">
+        <div class="num">3<span>+</span></div>
+        <div class="lbl">Líneas de servicio integradas</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">250<span>+</span></div>
+        <div class="lbl">Empleados máx. en empresas cliente</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">ISO</div>
+        <div class="lbl">9001:2015 — Sistema de calidad</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">24<span>/7</span></div>
+        <div class="lbl">Soporte remoto y presencial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="services-header fade-in">
+    <div class="section-label">Lo que hacemos</div>
+    <h2 class="section-title">Soluciones integrales<br>para cada necesidad.</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Mientras otros se especializan en una sola área, TechSolutions cubre toda tu infraestructura tecnológica de forma coordinada.</p>
+  </div>
+  <div class="services-grid fade-in">
+    <div class="service-item">
+      <span class="svc-num">01</span>
+      <span class="svc-icon">⌨</span>
+      <div class="svc-title">Desarrollo de Software a Medida</div>
+      <p class="svc-desc">Aplicaciones y sistemas adaptados exactamente a tu empresa: gestión de inventarios, facturación, automatización de procesos internos. Software modular, escalable y compatible con tus sistemas actuales.</p>
+      <div class="svc-tags">
+        <span>Python</span><span>Java</span><span>JavaScript</span><span>AWS</span><span>Azure</span>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="svc-num">02</span>
+      <span class="svc-icon">🔒</span>
+      <div class="svc-title">Ciberseguridad Avanzada</div>
+      <p class="svc-desc">Auditorías de seguridad, configuración de firewalls, cifrado de datos, control de accesos y planes de respuesta ante incidentes. Monitoreo de redes en tiempo real y formación al personal.</p>
+      <div class="svc-tags">
+        <span>SIEM</span><span>VPN</span><span>LOPDGDD</span><span>GDPR</span><span>Auditorías</span>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="svc-num">03</span>
+      <span class="svc-icon">◎</span>
+      <div class="svc-title">Consultoría y Soporte IT</div>
+      <p class="svc-desc">Asesoramiento en digitalización, mantenimiento de hardware, migración a la nube y gestión de incidencias. Soporte remoto y presencial con contratos de mantenimiento flexibles.</p>
+      <div class="svc-tags">
+        <span>Jira</span><span>Zendesk</span><span>Cloud</span><span>Presencial</span><span>Remoto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="pricing-header fade-in">
+    <div class="section-label">Planes y tarifas</div>
+    <h2 class="section-title">Precios claros,<br>sin sorpresas.</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Elige el paquete que mejor se adapta a tu empresa. También ofrecemos proyectos a medida con presupuesto personalizado.</p>
+  </div>
+  <div class="pricing-grid fade-in">
+    <div class="price-card">
+      <div class="price-name">Paquete Básico</div>
+      <div class="price-desc">Para PYMEs que dan sus primeros pasos en la digitalización y necesitan soporte estable.</div>
+      <div class="price-amount">1.500€</div>
+      <div class="price-period">/ mes · IVA no incluido</div>
+      <ul class="feat-list">
+        <li class="feat-item">Soporte técnico remoto y presencial</li>
+        <li class="feat-item">Mantenimiento preventivo de sistemas</li>
+        <li class="feat-item">Personalizaciones menores de software</li>
+        <li class="feat-item">Informes mensuales de estado</li>
+        <li class="feat-item">Atención en horario comercial</li>
+      </ul>
+      <a href="#contacto" class="btn-card">Solicitar información</a>
+    </div>
+    <div class="price-card featured">
+      <div class="feat-badge">Más completo</div>
+      <div class="price-name">Paquete Avanzado</div>
+      <div class="price-desc">Solución integral para PYMEs que requieren desarrollo activo, seguridad y asesoramiento continuo.</div>
+      <div class="price-amount">3.000€</div>
+      <div class="price-period">/ mes · IVA no incluido</div>
+      <ul class="feat-list">
+        <li class="feat-item">Desarrollo de software a medida</li>
+        <li class="feat-item">Ciberseguridad completa + auditorías</li>
+        <li class="feat-item">Consultoría estratégica IT</li>
+        <li class="feat-item">Soporte 24/7 para incidencias críticas</li>
+        <li class="feat-item">Formación al personal incluida</li>
+        <li class="feat-item">Migración y gestión en la nube</li>
+      </ul>
+      <a href="#contacto" class="btn-card">Solicitar información</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Proyecto a Medida</div>
+      <div class="price-desc">Para implementaciones específicas, migraciones o desarrollos puntuales con alcance definido.</div>
+      <div class="price-amount">500—</div>
+      <div class="price-period">2.000€ por proyecto</div>
+      <ul class="feat-list">
+        <li class="feat-item">Presupuesto personalizado</li>
+        <li class="feat-item">Definición de alcance detallada</li>
+        <li class="feat-item">Entrega con documentación técnica</li>
+        <li class="feat-item">Soporte postventa incluido</li>
+        <li class="feat-item">Posibilidad de mantenimiento posterior</li>
+      </ul>
+      <a href="#contacto" class="btn-card">Solicitar presupuesto</a>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="fade-in">
+    <div class="section-label">Quiénes somos</div>
+    <h2 class="section-title">El equipo detrás<br>de cada proyecto.</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Dos perfiles complementarios que cubren desde la ingeniería técnica hasta la gestión estratégica del negocio.</p>
+  </div>
+  <div class="team-grid fade-in">
+    <div class="team-card">
+      <div class="team-color"></div>
+      <div class="team-content">
+        <div class="team-avatar">JP</div>
+        <div class="team-name">Juan Pérez</div>
+        <div class="team-role">CTO · Desarrollo &amp; Ciberseguridad</div>
+        <p class="team-bio">Ingeniero Informático por la UPM con Máster en Ciberseguridad. 5 años liderando proyectos de software a medida para PYMEs y realizando auditorías de protección de datos. Responsable del diseño técnico y la seguridad de la información.</p>
+        <div class="team-skills">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Ciberseguridad</span>
+          <span class="skill-tag">Arquitectura de software</span>
+          <span class="skill-tag">AWS / Azure</span>
+          <span class="skill-tag">Auditorías</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-color"></div>
+      <div class="team-content">
+        <div class="team-avatar">ML</div>
+        <div class="team-name">Marta López</div>
+        <div class="team-role">CEO · Estrategia &amp; Negocio</div>
+        <p class="team-bio">Graduada en ADE con especialización en Tecnología de la Información por la UCM. 4 años como consultora IT diseñando estrategias de digitalización. Responsable de la planificación estratégica, gestión de clientes y desarrollo de negocio.</p>
+        <div class="team-skills">
+          <span class="skill-tag">Gestión de proyectos</span>
+          <span class="skill-tag">Marketing digital</span>
+          <span class="skill-tag">Consultoría IT</span>
+          <span class="skill-tag">IA aplicada</span>
+          <span class="skill-tag">PMP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAFO -->
+<section id="dafo">
+  <div class="fade-in">
+    <div class="section-label">Análisis estratégico</div>
+    <h2 class="section-title">Conocemos nuestro<br>punto de partida.</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="dafo-grid fade-in">
+    <div class="dafo-cell">
+      <div class="dafo-label">Fortalezas</div>
+      <div class="dafo-title">F</div>
+      <ul class="dafo-list">
+        <li>Equipo multidisciplinar con perfiles complementarios</li>
+        <li>Solución integral frente a proveedores parciales</li>
+        <li>Atención personalizada y rápida adaptación al cliente</li>
+        <li>Tecnologías modernas y servicio en la nube</li>
+      </ul>
+    </div>
+    <div class="dafo-cell">
+      <div class="dafo-label">Oportunidades</div>
+      <div class="dafo-title">O</div>
+      <ul class="dafo-list">
+        <li>Creciente demanda de digitalización en PYMEs</li>
+        <li>Aumento del teletrabajo y necesidad de ciberseguridad</li>
+        <li>Expansión nacional vía servicios online</li>
+        <li>Nuevas tecnologías: IA, IoT, smart devices</li>
+      </ul>
+    </div>
+    <div class="dafo-cell">
+      <div class="dafo-label">Debilidades</div>
+      <div class="dafo-title">D</div>
+      <ul class="dafo-list">
+        <li>Recursos financieros limitados en fase inicial</li>
+        <li>Escaso reconocimiento de marca al arranque</li>
+        <li>Dependencia de proveedores externos de infraestructura</li>
+        <li>Áreas financieras y de RRHH a reforzar</li>
+      </ul>
+    </div>
+    <div class="dafo-cell">
+      <div class="dafo-label">Amenazas</div>
+      <div class="dafo-title">A</div>
+      <ul class="dafo-list">
+        <li>Competencia consolidada con precios más bajos</li>
+        <li>Cambios rápidos en tecnología</li>
+        <li>Limitaciones presupuestarias de clientes PYME</li>
+        <li>Posibles problemas logísticos o de suministro IT</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-label fade-in">Empecemos</div>
+  <h2 class="section-title fade-in">¿Listo para digitalizar<br>tu empresa?</h2>
+  <p class="section-sub fade-in">Cuéntanos qué necesitas. Primera consulta gratuita, sin compromiso.</p>
+  <form class="contact-form fade-in" onsubmit="handleForm(event)">
+    <div class="form-row">
+      <div class="form-field">
+        <label>Nombre</label>
+        <input type="text" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-field">
+        <label>Empresa</label>
+        <input type="text" placeholder="Nombre de la empresa">
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Email</label>
+      <input type="email" placeholder="email@empresa.com" required>
+    </div>
+    <div class="form-field">
+      <label>¿Qué necesitas?</label>
+      <select>
+        <option value="" disabled selected>Selecciona un servicio</option>
+        <option>Desarrollo de software a medida</option>
+        <option>Ciberseguridad y auditorías</option>
+        <option>Consultoría y soporte IT</option>
+        <option>Paquete integral</option>
+        <option>No lo tengo claro todavía</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label>Mensaje (opcional)</label>
+      <textarea rows="4" placeholder="Cuéntanos un poco sobre tu empresa y qué problema quieres resolver..."></textarea>
+    </div>
+    <button type="submit" class="btn-send">Enviar mensaje →</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Tech<span>Solutions</span></div>
+  <div>Madrid · CNAE 62.01 · © 2025 TechSolutions SRL</div>
+  <div>hola@techsolutions.es</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        const children = e.target.querySelectorAll('.fade-in');
+        children.forEach((c, i) => {
+          setTimeout(() => c.classList.add('visible'), i * 100);
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-send');
+    btn.textContent = '¡Mensaje enviado! ✓';
+    btn.style.background = '#1a5c3a';
+    setTimeout(() => {
+      btn.textContent = 'Enviar mensaje →';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
